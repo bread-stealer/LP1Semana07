@@ -62,12 +62,28 @@ namespace ColorSpheres
         }
 
         public int GetTimesThrown()=> _timesThrown;
+
+        public override string ToString()
+        {
+            return $"Sphere {{ Radius={_radius:F2}, Thrown={_timesThrown}, Popped={IsPopped}, {_color} }}";
+        }
     }
     public class Program
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello LP!");
+            Sphere redSphere = new Sphere(new Color(220, 30, 30), radius:5.0f);
+            Sphere blueSphere = new Sphere(new Color(30, 100, 220), radius:3.5f);
+            Sphere ghostSphere = new Sphere(new Color(200, 200, 200, 128), radius:2.0f);
+
+            ThrowTimes(redSphere, 3);
+            ThrowTimes(blueSphere, 5);
+            ThrowTimes(ghostSphere, 2);
+
+            PrintState(redSphere, "Red Sphere");
+            PrintState(blueSphere, "Blue Sphere");
+            PrintState(ghostSphere, "Ghost Sphere");
+
         }
     }
 }
