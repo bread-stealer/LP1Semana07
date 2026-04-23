@@ -22,10 +22,15 @@ namespace PowerCell
         public int Level => 1 + (int)(Charge/40);
 
         //Method Consume(float amount) which reduces the charge by the given amount
-        // Method Restore() which restores the charge to 200
         public void Consume(float amount)
         {
             Charge -= amount;
+        }
+
+        // Method Restore() which restores the charge to 200
+        public void Restore()
+        {
+            Charge = 200f;
         }
 
         // Constructor that takes the name of the cell and initializes the charge to 200
@@ -33,6 +38,12 @@ namespace PowerCell
         {
             Name = name;
             Charge = 200f;
+        }
+
+        //Override Method ToString() to return a string in the format: "[Name] Level Level: Charge/200"
+        public override string ToString()
+        {
+            return $"[{Name}] Level {Level}: {Charge}/200";
         }
     }
     public class Program
