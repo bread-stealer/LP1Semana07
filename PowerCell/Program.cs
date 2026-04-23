@@ -8,8 +8,8 @@ namespace PowerCell
         // Variable of instance private: charge (float) 
         private float charge;
 
-        //Property auto-implemented of ready onlly: Name (string)
-        public string Name { get; }
+        //Property auto-implemented of readonly: Name (string)
+        public readonly string Name;
 
         //Property Charge (float) which the value is only between 0 and 200
         public float Charge
@@ -18,8 +18,8 @@ namespace PowerCell
             private set => charge = Math.Clamp(value, 0f, 200f);
         }
 
-        //Property read-only Level (int) with the value of 1 + (int)Charge/40
-        public int Level => 1 + (int)(Charge/40);
+        //Property readonly Level (int) with the value of 1 + (int)Charge/40
+        public int Level => 1 + (int)(Charge / 40f);
 
         //Method Consume(float amount) which reduces the charge by the given amount
         public void Consume(float amount)
