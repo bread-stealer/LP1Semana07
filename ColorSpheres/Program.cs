@@ -34,6 +34,35 @@ namespace ColorSpheres
 
         private static int Clamp(int value) => Math.Clamp(value, 0, 255);
     }
+
+    public class Sphere
+    {
+        private Color _color;
+        private float _radius;
+        private int _timesThrown;
+
+        public Color Color => _color;
+        public float Radius => _radius;
+        public bool IsPopped => _radius <= 0f;
+
+        public void Pop()
+        {
+            _radius = 0f;
+        }
+
+        public void Throw()
+        {
+            if (IsPopped)
+            {
+                Console.WriteLine("[Sphere] Cannot throw a popped sphere.");
+                return;
+            }
+
+            _timesThrown++;
+        }
+
+        public int GetTimesThrown()=> _timesThrown;
+    }
     public class Program
     {
         private static void Main(string[] args)
